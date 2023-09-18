@@ -1,5 +1,5 @@
 import * as api from "../api/index";
-import React from "react";
+
 export const askQuestion = (questionData, navigate) => async (dispatch) => {
   try {
     const { data } = await api.postQuestion(questionData);
