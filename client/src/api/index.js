@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://stack-underflow-api.onrender.com/",
+  baseURL: "https://stack-overflow-clone-api-wng3.onrender.com/",
 
 });
 
