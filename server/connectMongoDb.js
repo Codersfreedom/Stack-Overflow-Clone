@@ -1,13 +1,12 @@
 import mongoose from "mongoose";
-<<<<<<< HEAD
 import dotenv from 'dotenv';
 dotenv.config();
-=======
-const CONNECTION_URL = "mongodb+srv://rakeshmanna762:I92lR1ifQP1ToYLP@cluster0.cdaesat.mongodb.net/?retryWrites=true&w=majority"
->>>>>>> 99773a87d465f12146d20b0991bdb207285b6d79
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(CONNECTION_URL);
+    const conn = await mongoose.connect(process.env.CONNECTION_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(error);
