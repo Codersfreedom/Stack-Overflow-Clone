@@ -9,7 +9,6 @@ export const AskQuestion = async (req, res) => {
     await postQuestion.save();
     res.status(200).json("Posted a question successfully");
   } catch (error) {
-    console.log(error);
     res.status(409).json("Couldn't post a new question");
   }
 };

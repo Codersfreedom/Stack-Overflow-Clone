@@ -1,36 +1,28 @@
-import React,{useEffect}  from "react";
-import { Link,useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import decode from "jwt-decode"
-
 import logo from "../../assests/logo.png";
 import search from "../../assests/search-solid.svg";
 import Avatar from "../../components/Avatar/Avatar";
 import "./Navbar.css";
-
 import bars from "../../assests/bars-solid.svg";
 import { setCurrentUser } from "../../actions/currentUser";
 
 
 const Navbar = ({ handleSlideIn }) => {
- const dispatch = useDispatch()
+  const dispatch = useDispatch()
   // var User = null;
-  var User =useSelector((state) => (state.currentUserReducer))
-  useEffect(() =>{
-    dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
-  },[dispatch])
+  var User = useSelector((state) => state.currentUserReducer)
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-
-  const handleLogout =() =>{
-    dispatch({type:"LOGOUT"});
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
     navigate("/");
     dispatch(setCurrentUser(null));
-    console.log(User);
+
   };
-
-
   useEffect(() => {
     const token = User?.token;
     if (token) {
@@ -85,7 +77,7 @@ const navigate = useNavigate();
                   to={`/Users/${User?.result?._id}`}
                   style={{ color: "white", textDecoration: "none" }}
                 >
-                {User.result.name.charAt(0).toUpperCase()}
+                  {User.result.name.charAt(0).toUpperCase()}
                 </Link>
               </Avatar>
               <button className="nav-item nav-links" onClick={handleLogout} >
