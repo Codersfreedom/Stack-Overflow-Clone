@@ -21,6 +21,7 @@ app.use('/user',userRoutes)
 app.use('/questions',questionRoutes)
 app.use('/answer',answerRoutes)
 
+<<<<<<< HEAD
 const PORT =  5000
 app.listen(PORT,()=>{
     console.log(`Example app is running on ${PORT}`)
@@ -30,3 +31,14 @@ app.listen(PORT,()=>{
 // mongoose.connect(CONNECTION_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 // .then(() => app.listen(PORT,()=> {console.log(`server running on port ${PORT}`)}))
 // .catch((err) => console.log(err.message))
+=======
+const PORT = process.env.PORT|| 5000
+app.listen(PORT,()=>{
+    console.log(`Example app is running on ${PORT}`)
+})
+
+
+// mongoose.connect(DATABASE_URL,{useNewUrlParser:true,useUnifiedTopology:true})
+// .then(() => app.listen(PORT,()=> {console.log(`server running on port ${PORT}`)}))
+// .catch((err) => console.log(err.message))
+>>>>>>> 99773a87d465f12146d20b0991bdb207285b6d79
