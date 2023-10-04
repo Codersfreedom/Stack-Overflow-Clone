@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://stack-underflow-ocrs.onrender.com/",
+  baseURL: "http://localhost:5000",
 
 });
 

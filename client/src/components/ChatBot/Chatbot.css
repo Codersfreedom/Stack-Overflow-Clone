@@ -1,0 +1,142 @@
+/* ChatInterface.css */
+
+.chat-interface {
+
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 400px; /* Adjust the width as needed */
+  max-width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display:flex ; /* Hide the chat interface by default */
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom-right ;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-interface{
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.1s ease;
+}
+.chat-interface.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform:scale(1); /* Slide the chat interface into view */
+   /* Show the chat interface when it's open */
+}
+
+.chat-messages {
+  display: flex;
+  flex-grow: 1;
+  padding: 30px 20px 100px;
+  overflow-y: auto;
+  height: 250px;
+  flex-direction: column;
+
+}
+.chat-interface .top{
+  padding: 3px 0;
+  position: relative;
+ 
+  text-align: center;
+  color: #fff;
+  background: #724ae8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.top h2{
+  font-size: 1.4rem;
+}
+
+.chat-messages .chatbox{
+  overflow-y: auto;
+  height: 510px;
+  padding: 30px 20px 100px;
+}
+.message {
+  display: block;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 70%;
+}
+
+.message.user {
+  background-color: #007bff;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.message.bot {
+  background-color: #eee;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+ 
+  
+}
+.message.user:first-of-type {
+  border-top-right-radius: 5px;
+}
+.message.bot:first-of-type {
+  border-top-left-radius: 5px;
+}
+.message.user:last-of-type {
+  border-bottom-right-radius: 5px;
+}
+
+.message.bot:last-of-type {
+  border-bottom-left-radius: 5px;
+}
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+.chat-input textarea {
+  flex-grow: 1;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 10px 10px 10px 0;
+  border-radius: 3px;
+  margin-right: 10px;
+  height: 20px;
+  max-height: 180px;
+  font-size: 0.95rem;
+
+}
+
+/* Send button style */
+.chat-input button {
+  background-color: #724ae8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Hover effect for the send button */
+.chat-input button:hover {
+  background-color: rgb(72, 126, 235);
+}
