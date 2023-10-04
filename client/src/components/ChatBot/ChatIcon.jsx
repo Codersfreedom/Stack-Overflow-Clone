@@ -4,9 +4,9 @@ const ChatIcon = ({toggleChat, isOpen}) => {
     console.log("click")
   return (
     <body>
-    <button class={`chatbot-toggler ${isOpen ? 'open' : ''}` } onClick={toggleChat} >
-        <span class="material-symbols-rounded">mode_comment</span>
-        <span class="material-symbols-outlined">close</span>
+    <button className={`chatbot-toggler ${isOpen ? 'open' : ''}` } onClick={toggleChat} >
+        <span className="material-symbols-rounded">mode_comment</span>
+        <span className="material-symbols-outlined">close</span>
       </button>
     </body>
   )
