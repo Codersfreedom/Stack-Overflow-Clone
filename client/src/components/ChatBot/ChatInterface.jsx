@@ -13,7 +13,7 @@ const ChatInterface = ({ isOpen }) => {
   };
 
   const sendMessageToOpenAI = async (message) => {
-    const apiKey = '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';
+    const apiKey = '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';
     const endpoint = 'https://api.openai.com/v1/chat/completions';
 
     try {
@@ -34,6 +34,11 @@ const ChatInterface = ({ isOpen }) => {
         setMessages((prevMessages) => [
           ...prevMessages,
           { text: newMessage, isUser: false },]);
+      }).catch(() =>{
+        let erorr = "Oops! Something wrong happened, please try again."
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { text: erorr, isUser: false },]);
       })
 
 
