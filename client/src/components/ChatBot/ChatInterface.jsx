@@ -1,48 +1,58 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import './Chatbot.css'
+import { auth, firebase } from '../../firebase.js';
+
+
+
+
 const ChatInterface = ({ isOpen }) => {
 
   const [isVerified, setIsVerified] = useState(false);
   const [otp, setOtp] = useState('');
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
-  const [isChatVisible, setIsChatVisible] = useState(false);
-  const [isPhone, setPhone] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [isPhone, setPhone] = useState(false);
+  const [verificationId, setVerificationId] = useState(null);
 
 
-  const toggleChat = () => {
-    console.log('Chat icon clicked')
-    setIsChatVisible(!isChatVisible);
-    console.log('isvisiable', isChatVisible);
-  };
+  const handleSendOTP = async () => {
 
-  const handlePhoneNumberSubmit = () => {
-    if (phoneNumber) {
+    if (phoneNumber === "" || phoneNumber.length < 10) {
+      alert("Enter a Valid phone number.")
+      return;
+    }
+    try {
+      let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+      const confirmation = await auth.signInWithPhoneNumber(phoneNumber, verify);
+      setVerificationId(confirmation.verificationId);
       setPhone(true);
-    } else {
-      alert('Please enter a valid phone number.');
+      // console.log(verificationId);
+      alert("Otp Send");
+
+    } catch (error) {
+      window.location.reload();
+      console.error('Error sending OTP:', error);
     }
-  };
+  }
 
+  const handleVerifyOTP = async () => {
+    if (otp === null) {
+      alert("Enter a valid OTP");
+      return;
+    }
 
-  const handleVerification = () => {
-    // OTP verification logic 
-
-    if (otp === '123456') {
+    try {
+      const credential = await auth.signInWithCredential(firebase.auth.PhoneAuthProvider.credential(verificationId, otp))
+      console.log('User signed in:', credential.user);
       setIsVerified(true);
-      // Simulate a welcome message from the chatbot
-      const WelcomeMsg = "Welcome! How can I assist you today?";
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { text: WelcomeMsg, isUser: false },
-      ]);
-
-    } else {
-      alert('Invalid OTP. Please try again.');
+    } catch (error) {
+      alert("Wrong Code,enter a valid otp");
+      console.error('Error verifying OTP:', error);
     }
-  };
+  }
+
 
 
   // For chat interface
@@ -56,40 +66,37 @@ const ChatInterface = ({ isOpen }) => {
     try {
       const botResponse = await axios.post('http://localhost:5000/chat', { prompt: message });
 
-      // Add bot Response to the chat
+      // Adding bot Response to the chat
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: botResponse.data.response, isUser: false },
       ]);
+
     } catch (error) {
+      let Error = 'You are offline';
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: Error, isUser: false },
+      ]);
       console.log(error);
     }
-
-
-
-
 
   }
 
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
 
-    // Add the user's message to the chat
+    // Adding the user's message to the chat
     setMessages((prevMessages) => [
       ...prevMessages,
       { text: input, isUser: true },
     ]);
     setInput('');
 
-    // Send the user's message to Backend API and get a response
-
+    // Sending the user's message to Backend API and get a response
     await sendMessageToOpenAI(input);
 
-
-
   };
-
-
 
 
 
@@ -106,42 +113,56 @@ const ChatInterface = ({ isOpen }) => {
           <h2>Chatbot</h2>
         </div>
 
-        <div className={`chat-container ${isChatVisible ? 'visible' : ''}`}>
+        <div className='chat-container'>
           {!isVerified ?
             (
               <div className="verification-container">
 
-
-                {!isPhone ? (
+                {!isPhone && (
                   <div>
-                    <h2>Verify Your Phone Number Before Use the bot</h2>
+
+                    <h2>Verify Your Phone Number to Use the bot</h2>
                     <input
                       type="text"
                       placeholder="Enter Phone Number"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                     />
-                    <button onClick={handlePhoneNumberSubmit}>Send OTP</button>
-
+                    <div id="recaptcha-container"></div>
+                    <button onClick={handleSendOTP}>Send OTP</button>
 
                   </div>
-                )
+                )}
+                {verificationId && (
+                  <div>
+                    <h2>Enter the OTP </h2>
+                    <input
+                      type="text"
+                      placeholder="Enter OTP"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                    />
+                    <button onClick={handleVerifyOTP}>Verify</button>
+
+                  </div>
 
 
-                  : (
+                )}
 
-                    <div>
-                      <h2>Enter the OTP </h2>
-                      <input
-                        type="text"
-                        placeholder="Enter OTP"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                      />
-                      <button onClick={handleVerification}>Verify</button>
 
-                    </div>
-                  )}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
               </div>
             ) : (
