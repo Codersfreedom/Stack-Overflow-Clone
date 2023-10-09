@@ -54,18 +54,20 @@
   text-decoration: none;
   color: rgb(69, 69, 69);
   transition: 0.2s;
-  
-  
 }
+
 
 .nav-btn {
   cursor: pointer;
   border-radius: 20px;
   padding: 10px 20px;
-  width: 50px;
-
+ 
+  
 }
-
+.res-nav{
+ max-width: 75px;
+ padding: 10px 0 20px 20px;
+}
 .nav-item:hover,
 .slide-in-icon:hover {
   background-color: rgb(226, 226, 226);

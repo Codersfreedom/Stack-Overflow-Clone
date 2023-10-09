@@ -152,6 +152,30 @@
 
 .verification-container{
   padding: 20px;
-  
+  width: 317px;
   text-align: center;
+}
+.verification-container h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.verification-container input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.verification-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.verification-container buttons:hover {
+  background-color: rgb(72, 126, 235);
 }

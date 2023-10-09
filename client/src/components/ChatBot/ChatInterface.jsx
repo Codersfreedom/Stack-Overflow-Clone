@@ -28,22 +28,20 @@ const ChatInterface = ({ isOpen }) => {
 
 
   const handleVerification = () => {
-    // Implement your OTP verification logic here
-    // For simplicity, we'll consider it verified if the OTP is '123456'
-      setIsVerified(true)
+    // OTP verification logic 
+
+    if (otp === '123456') {
+      setIsVerified(true);
+      // Simulate a welcome message from the chatbot
       const WelcomeMsg = "Welcome! How can I assist you today?";
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: WelcomeMsg, isUser: false },
       ]);
-    
-    // if (otp === '123456') {
-    //   setIsVerified(true);
-    //   // Simulate a welcome message from the chatbot
-    //   
-    // } else {
-    //   alert('Invalid OTP. Please try again.');
-    // }
+
+    } else {
+      alert('Invalid OTP. Please try again.');
+    }
   };
 
 
@@ -113,17 +111,17 @@ const ChatInterface = ({ isOpen }) => {
             (
               <div className="verification-container">
 
-                <h2>OTP Verification</h2>
+
                 {!isPhone ? (
                   <div>
-
+                    <h2>Verify Your Phone Number Before Use the bot</h2>
                     <input
                       type="text"
                       placeholder="Enter Phone Number"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                     />
-                    <button onClick={handlePhoneNumberSubmit}>Submit</button>
+                    <button onClick={handlePhoneNumberSubmit}>Send OTP</button>
 
 
                   </div>
@@ -133,6 +131,7 @@ const ChatInterface = ({ isOpen }) => {
                   : (
 
                     <div>
+                      <h2>Enter the OTP </h2>
                       <input
                         type="text"
                         placeholder="Enter OTP"

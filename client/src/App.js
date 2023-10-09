@@ -17,7 +17,9 @@ import ChatIcon from './components/ChatBot/ChatIcon';
 
 
 function App() {
+
   const dispatch = useDispatch()
+
   useEffect (() =>{
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
@@ -42,8 +44,9 @@ function App() {
   const toggleChat = () => {
     
     setIsOpen(!isOpen);
-    console.log("clicked")
+    // console.log("clicked")
   };
+
   return (
     <div className="App">
     <Router>
