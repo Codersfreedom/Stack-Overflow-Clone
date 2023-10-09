@@ -24,7 +24,7 @@ const ChatInterface = ({ isOpen }) => {
       return;
     }
     try {
-      let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+      let verify =  new firebase.auth.RecaptchaVerifier('recaptcha-container');
       const confirmation = await auth.signInWithPhoneNumber(phoneNumber, verify);
       setVerificationId(confirmation.verificationId);
       setPhone(true);
@@ -32,7 +32,7 @@ const ChatInterface = ({ isOpen }) => {
       alert("Otp Send");
 
     } catch (error) {
-      window.location.reload();
+      // window.location.reload();
       console.error('Error sending OTP:', error);
     }
   }
@@ -45,8 +45,13 @@ const ChatInterface = ({ isOpen }) => {
 
     try {
       const credential = await auth.signInWithCredential(firebase.auth.PhoneAuthProvider.credential(verificationId, otp))
-      console.log('User signed in:', credential.user);
+      // console.log('User signed in:', credential.user);
       setIsVerified(true);
+      const Msg = "Welcome to the Chatbot, How can i assist you today?"
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: Msg, isUser: false },
+      ]);
     } catch (error) {
       alert("Wrong Code,enter a valid otp");
       console.error('Error verifying OTP:', error);
@@ -73,7 +78,7 @@ const ChatInterface = ({ isOpen }) => {
       ]);
 
     } catch (error) {
-      let Error = 'You are offline';
+      let Error = 'You are offline!';
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: Error, isUser: false },

@@ -44,6 +44,7 @@ function App() {
   const toggleChat = () => {
     
     setIsOpen(!isOpen);
+    console.log(isOpen);
     // console.log("clicked")
   };
 
@@ -52,7 +53,7 @@ function App() {
     <Router>
       <Navbar handleSlideIn={handleSlideIn} />
       <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
-      <ChatIcon toggleChat={toggleChat}/>
+      <ChatIcon toggleChat={toggleChat} isOpen={isOpen}/>
         <ChatInterface isOpen={isOpen}  />
     </Router>
 
