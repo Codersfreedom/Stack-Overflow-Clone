@@ -24,7 +24,7 @@ const ChatInterface = ({ isOpen }) => {
       return;
     }
     try {
-      let verify =  new firebase.auth.RecaptchaVerifier('recaptcha-container');
+      let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
       const confirmation = await auth.signInWithPhoneNumber(phoneNumber, verify);
       setVerificationId(confirmation.verificationId);
       setPhone(true);
@@ -153,21 +153,6 @@ const ChatInterface = ({ isOpen }) => {
 
 
                 )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
               </div>
             ) : (
