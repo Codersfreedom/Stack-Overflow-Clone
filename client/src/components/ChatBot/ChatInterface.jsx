@@ -69,7 +69,7 @@ const ChatInterface = ({ isOpen }) => {
   const sendMessageToOpenAI = async (message) => {
 
     try {
-      const botResponse = await axios.post('http://localhost:5000/chat', { prompt: message });
+      const botResponse = await axios.post('https://stack-overflow-clone-api-wng3.onrender.com/chat', { prompt: message });
 
       // Adding bot Response to the chat
       setMessages((prevMessages) => [

@@ -17,6 +17,7 @@
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
   transition: all 0.1s ease;
 }
+
 .chat-interface.open {
   opacity: 1;
   pointer-events: auto;
@@ -155,7 +156,8 @@
 .verification-container buttons:hover {
   background-color: rgb(72, 126, 235);
 }
-@media (max-width: 360px) {
+
+@media (max-width: 414px) and (min-width:360px) {
   .chat-interface.open {
     width: 240px;
   }
