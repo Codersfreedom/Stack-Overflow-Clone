@@ -5,6 +5,7 @@ import {
   getAllQuestions,
   deleteQuestion,
   voteQuestion,
+  UserTotalUpvote,
 } from "../controllers/Questions.js";
 import auth from "../middlewares/auth.js";
 
@@ -14,5 +15,6 @@ router.post("/Ask", auth, AskQuestion);
 router.get("/get", getAllQuestions);
 router.delete("/delete/:id",auth, deleteQuestion);
 router.patch("/vote/:id",auth, voteQuestion);
+router.get("/UserTotalVote/:id",UserTotalUpvote)
 
 export default router;

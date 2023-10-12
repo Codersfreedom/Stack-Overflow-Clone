@@ -8,6 +8,7 @@ exports.sendOTP = functions.https.onCall(async (data, context) => {
   const auth = admin.auth();
 
   try {
+    let verify = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     const verificationSnapshot = await auth.signInWithPhoneNumber(phoneNumber);
     return { verificationId: verificationSnapshot.verificationId };
   } catch (error) {

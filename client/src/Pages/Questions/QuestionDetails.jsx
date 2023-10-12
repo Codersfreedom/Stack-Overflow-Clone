@@ -14,17 +14,20 @@ import {
   deleteQuestion,
   voteQuestion,
 } from "../../actions/question";
+import Badge from "../../components/Badges/Badge";
 
 const QuestionDetails = () => {
   const { id } = useParams();
   const questionsList = useSelector((state) => state.questionsReducer);
+
 
   const [Answer, setAnswer] = useState("");
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const location = useLocation();
-  const url = "https://stack-underflow-ocrs.onrender.com";
+  // const url = "https://stack-underflow-ocrs.onrender.com";
+const url = "https:localhost:5000/";
 
   const handlePostAns = (e, answerLength) => {
     e.preventDefault();
@@ -84,9 +87,25 @@ const QuestionDetails = () => {
           {questionsList.data
             .filter((question) => question._id === id)
             .map((question) => (
+              
               <div key={question._id}>
                 <section className="question-details-container">
-                  <h1>{question.questionTitle}</h1>
+                  <div className="vote-container">
+                   <h1>{question.questionTitle}</h1> 
+                  
+                   
+                   <Link to={`/Users/${question.userId}`} className="badge">
+                  <Badge {...question}/>
+                 </Link>
+                   
+                   
+                  
+                 
+              
+                   
+                  </div>
+                  
+              
                   <div className="question-details-container-2">
                     <div className="question-votes">
                       <img

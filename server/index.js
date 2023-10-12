@@ -6,6 +6,7 @@ import cors from "cors";
 import userRoutes from "./routes/users.js";
 import questionRoutes from "./routes/Questions.js";
 import answerRoutes from "./routes/Answers.js";
+
 import dotenv from "dotenv";
 connectDB();
 const app = express();
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRoutes);
 app.use("/questions", questionRoutes);
 app.use("/answer", answerRoutes);
+
 
 app.post("/chat", async (req, res) => {
   const apiKey = process.env.OPENAI_API_KEY;

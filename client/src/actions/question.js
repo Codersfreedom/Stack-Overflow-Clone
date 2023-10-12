@@ -14,11 +14,23 @@ export const askQuestion = (questionData, navigate) => async (dispatch) => {
 export const fetchAllQuestions = () => async (disptach) => {
   try {
     const { data } = await api.getAllQuestions();
+   console.log(data);
     disptach({ type: "FETCH_ALL_QUESTIONS", payload: data });
   } catch (error) {
     console.log(error);
   }
 };
+
+export const fetchTotalVotes = (id) =>async(dispatch)=>{
+  try {
+    const {data} = await api.getTotalUpVotes(id);
+    console.log(data);
+    dispatch({type:"FETCH_TOTAL_VOTES",payload:data});
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
 
 export const deleteQuestion = (id, navigate) => async (dispatch) => {
   try {

@@ -157,8 +157,32 @@
   background-color: rgb(72, 126, 235);
 }
 
-@media (max-width: 414px) and (min-width:360px) {
+@media (max-width: 454px) and (min-width:350px) {
   .chat-interface.open {
+    width: 245px;
+    height: 410px;
+
+ 
+    
+    
+  }
+  .chat-container{
+    height: 330px;
+  }
+  .chatbox{
+    height: 310px;
+    
+  }
+  .chat-messages{
+    padding-bottom: 33px;
+   
+  }
+  .chat-input{
+    padding: 7px 2px 0 3px;
+  }
+  
+  .verification-container{
     width: 240px;
+   padding-right:40px ;
   }
 }

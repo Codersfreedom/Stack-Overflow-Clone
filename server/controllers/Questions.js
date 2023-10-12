@@ -22,6 +22,25 @@ export const getAllQuestions = async (req, res) => {
   }
 };
 
+export const UserTotalUpvote = async (req, res) => {
+
+  const { id: _id } = req.params;
+
+  try {
+    const doc = await Questions.findById(_id);
+
+    if (doc) {
+      const arrayLength = doc.upVote.length;
+      return res.json({ length: arrayLength });
+    }
+    return res.json({ length: 0 });
+  } catch (error) {
+    console.error('Error fetching TotalUpVotes:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+
+  }
+};
+
 export const deleteQuestion = async (req, res) => {
   const { id: _id } = req.params;
 

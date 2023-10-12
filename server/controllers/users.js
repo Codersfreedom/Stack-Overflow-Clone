@@ -25,7 +25,7 @@ export const updateProfile = async (req, res) => {
   const { name, about, tags } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
-    return res.status(404).send("question unavailable...");
+    return res.status(404).send("User unavailable...");
   }
 
   try {
