@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import probadge from '../../assests/pro_badge.jpg'
-import legendbadge from '../../assests/legend_badge.png'
-
+import React from 'react'
+import risingStar from '../../assests/rising_star.png';
+import superStar from '../../assests/super_star.jpg'
+import './Badge.css'
 
 const Badge =  ({ upVote }) => {
   
   const count = upVote.length;
-  const [Badge, setBadge] = useState("pro");
+  
 
 
 
@@ -15,12 +15,12 @@ const Badge =  ({ upVote }) => {
 
 
     <div className='badge'>
-      {count >= 1 && (
+      {count >= 10 && (
 
-        <img src={probadge} alt="probadge" title='Pro Badge' width="37" />
+        <img src={risingStar} alt="probadge" title='Rising Star' width="44" />
       )}
       {count >= 50 && (
-        <img src={legendbadge} alt="probadge" title='Legend Badge' width="37" />
+        <img src={superStar} alt="probadge" title='Super Star' width="44" />
       )}
     </div>
   )

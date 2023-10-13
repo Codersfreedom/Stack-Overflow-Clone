@@ -1,0 +1,6 @@
+.badge{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    height: 45px;
+}

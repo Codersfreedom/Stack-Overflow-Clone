@@ -1,17 +1,29 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import probadge from '../../assests/pro_badge.jpg'
-import legendbadge from '../../assests/legend_badge.png'
+import risingStar from '../../assests/rising_star.png';
+import superStar from '../../assests/super_star.jpg'
+import goldUser from '../../assests/gold user.png';
+import superUser from '../../assests/trophy.png';
 import './ProfileBio.css'
+
 const ProfileBio = ({ currentProfile }) => {
-  var  {id}  = useParams();
-console.log(id)
+  const { id } = useParams();
+
 
   const questionsList = useSelector((state) => state.questionsReducer);
- 
-    
- console.log(questionsList.data[0].answer);
+
+  const totalAnswers = calculateTotalAnswers(questionsList.data, id);
+
+  function calculateTotalAnswers(questions, id) {
+    let totalAnswers = 0;
+    questions.forEach((question) => {
+      totalAnswers += question.answer.filter((ans) => ans.userId === id).length;
+    });
+    return totalAnswers;
+  }
+
+
 
   return (
     <div>
@@ -40,31 +52,66 @@ console.log(id)
         <div className="Badges">
 
           <h4>Earned Badges</h4>
-         
+
           {questionsList.data
             .filter((question) => question.userId === id)
             .map((question) => (
-<div key={question._id} className="badge_section">
+              <div key={question._id} className="badge_section">
 
- {question.upVote.length ===1 &&(
-        <img src={probadge} alt="probadge" className="probadge" title="Pro Badge"  />
- )} 
- 
- {question.upVote.length ===1 &&(
- <img src={legendbadge} alt="legendbadge" className="legendbadge" title="Legend Badg1"  />
- ) }
+                {question.upVote.length >= 10 && (
+                  <img src={risingStar} alt="risingstar" className="probadge" title="Rising Star" />
+                )}
 
-{question.upVote.length <1 &&(
-<p>User has no badge till now.</p>
- ) }
-</div>
+                {question.upVote.length >= 50 && (
+                  <img src={superStar} alt="legendbadge" className="legendbadge" title="Super Star" />
+                )}
 
+
+
+
+                {question.upVote.length < 10 && (
+                  <p>User has no badge till now.</p>
+                )}
+              </div>
             ))}
-         
+
+          <div className="Total_answer">
+
+            {totalAnswers > 0 && totalAnswers >= 20 && (
+              <div className=" image-container ">
+                <img src={goldUser} alt="golduser" title="Gold User" />
+
+
+              </div>
+            )}
+            {totalAnswers > 0 && totalAnswers >= 100 && (
+              <div className=" image-container ">
+
+                <img src={superUser} alt="superuser" title="Super User" />
+
+              </div>
+            )}
+
+
+
+
+
+          </div>
+
+
         </div>
+
+
+
+
       </div>
     </div>
+
+
+
   );
 };
+
+
 
 export default ProfileBio;

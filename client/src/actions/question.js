@@ -21,16 +21,7 @@ export const fetchAllQuestions = () => async (disptach) => {
   }
 };
 
-export const fetchTotalVotes = (id) =>async(dispatch)=>{
-  try {
-    const {data} = await api.getTotalUpVotes(id);
-    console.log(data);
-    dispatch({type:"FETCH_TOTAL_VOTES",payload:data});
-  } catch (error) {
-    console.log(error);
-    
-  }
-}
+
 
 export const deleteQuestion = (id, navigate) => async (dispatch) => {
   try {
