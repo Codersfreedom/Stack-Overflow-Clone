@@ -11,6 +11,7 @@ console.log(id)
   const questionsList = useSelector((state) => state.questionsReducer);
  
     
+ console.log(questionsList.data[0].answer);
 
   return (
     <div>
