@@ -4,11 +4,14 @@ import "./RightSidebar.css"
 import WidgetTags from './WidgetTags'
 
 
-const RightSidebar = () => {
+
+const RightSidebar = ({styles}) => {
+
+
   return (
     <aside className='right-sidebar'>
-      <Widget/>
-      <WidgetTags/>
+      <Widget  />
+      <WidgetTags styles={styles} />
 
     </aside>
   )

@@ -6,7 +6,8 @@ import "./Auth.css";
 import icon from "../../assests/icon.png";
 import AboutAuth from "./AboutAuth";
 import { signup, login } from "../../actions/auth";
-const Auth = () => {
+
+const Auth = ({styles,logoStyle}) => {
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,11 +39,11 @@ const Auth = () => {
   };
 
   return (
-    <section className="auth-section">
+    <section className="auth-section" style={styles}>
       {isSignup && <AboutAuth />}
-      <div className="auth-container-2">
-        <img src={icon} alt="stack overflow" className="login-logo" />
-        <form onSubmit={handleSubmit}>
+      <div className="auth-container-2" style={styles}>
+        <img src={icon} alt="stack overflow" className="login-logo" style={logoStyle}/>
+        <form onSubmit={handleSubmit} style={styles}> 
           {isSignup && (
             <label htmlFor="name">
               <h4>Display Name</h4>
@@ -51,9 +52,11 @@ const Auth = () => {
                 id="name"
                 name="name"
                 value={name}
+               
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
+                
               />
             </label>
           )}

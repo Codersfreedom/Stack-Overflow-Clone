@@ -1,7 +1,10 @@
 import React from 'react'
 
-const WidgetTags = () => {
+import './RightSidebar.css'
 
+const WidgetTags = ({styles}) => {
+
+ 
     const tags = [
         "c",
         "css",
@@ -21,12 +24,12 @@ const WidgetTags = () => {
     ];
 
     return (
-        <div className='widget-tags'>
-            <h4>Watched tags</h4>
+        <div className='widget-tags' >
+            <h4 style={styles}>Watched tags</h4>
             <div className="widget-tags-div">
                 {
                     tags.map((tag) => (
-                        <p key={tag}>{tag}</p>
+                        <p  key={tag}>{tag}</p>
                     )
 
 

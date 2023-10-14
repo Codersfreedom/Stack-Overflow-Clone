@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Avatar from "../../components/Avatar/Avatar";
 import { deleteAnswer } from "../../actions/question";
 
-const DisplayAnswer = ({ question, handleShare }) => {
+const DisplayAnswer = ({ question, handleShare,styles }) => {
   const User = useSelector((state) => state.currentUserReducer);
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -20,13 +20,13 @@ const DisplayAnswer = ({ question, handleShare }) => {
           <p>{ans.answerBody}</p>
           <div className="question-actions-user">
             <div>
-              <button type="button" onClick={handleShare}>
+              <button type="button" onClick={handleShare} style={styles}>
                 Share
               </button>
               {User?.result?._id === ans?.userId && (
                 <button
                   type="button"
-                  onClick={() => handleDelete(ans._id, question.noOfAnswers)}
+                  onClick={() => handleDelete(ans._id, question.noOfAnswers)} style={styles}
                 >
                   Delete
                 </button>

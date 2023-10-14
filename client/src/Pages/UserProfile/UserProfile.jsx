@@ -11,7 +11,7 @@ import EditProfileForm from "./EditProfileForm";
 import ProfileBio from "./ProfileBio";
 import "./UsersProfile.css";
 
-const UserProfile = ({ slideIn, handleSlideIn }) => {
+const UserProfile = ({ slideIn, handleSlideIn,styles,logoStyle }) => {
   const { id } = useParams();
   const users = useSelector((state) => state.usersReducer);
   const currentProfile = users.filter((user) => user._id === id)[0];
@@ -20,7 +20,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
 
   return (
     <div className="home-container-1">
-      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />
       <div className="home-container-2">
         <section>
           <div className="user-details-container">
@@ -37,7 +37,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
               <div className="user-name">
                 <h1>{currentProfile?.name}</h1>
                 <p>
-                  <FontAwesomeIcon icon={faBirthdayCake} /> Joined{" "}
+                  <FontAwesomeIcon icon={faBirthdayCake}/> Joined{" "}
                   {moment(currentProfile?.joinedOn).fromNow()}
                 </p>
               </div>
@@ -57,6 +57,7 @@ const UserProfile = ({ slideIn, handleSlideIn }) => {
               <EditProfileForm
                 currentUser={currentUser}
                 setSwitch={setSwitch}
+                styles={styles}
               />
             ) : (
               <ProfileBio currentProfile={currentProfile} />

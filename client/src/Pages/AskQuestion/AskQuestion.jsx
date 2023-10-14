@@ -6,7 +6,7 @@ import { askQuestion } from "../../actions/question";
 
 
 
-const AskQuestion = () => {
+const AskQuestion = ({styles}) => {
     const [questionTitle, setQuestionTitle] = useState("");
     const [questionBody, setQuestionBody] = useState("");
     const [questionTags, setQuestionTags] = useState("");
@@ -42,12 +42,12 @@ const AskQuestion = () => {
       };
     
   return (
-    <div className="ask-question">
-    <div className="ask-ques-container">
+    <div className="ask-question" style={styles} >
+    <div className="ask-ques-container" style={styles}>
       <h1>Ask a public Question</h1>
       <form onSubmit={handleSubmit}>
-        <div className="ask-form-container">
-          <label htmlFor="ask-ques-title">
+        <div className="ask-form-container" style={styles}>
+          <label htmlFor="ask-ques-title" >
             <h4>Title</h4>
             <p>
               Be specific and imagine you’re asking a question to another
@@ -59,7 +59,8 @@ const AskQuestion = () => {
               onChange={(e) => {
                 setQuestionTitle(e.target.value);
               }}
-              placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+              placeholder="e.g. Is there an R function for finding the index of an element in a vector?" 
+              style={styles}
             />
           </label>
           <label htmlFor="ask-ques-body">
@@ -71,6 +72,7 @@ const AskQuestion = () => {
             <textarea
               name=""
               id="ask-ques-body"
+              style={styles}
               onChange={(e) => {
                 setQuestionBody(e.target.value);
               }}
@@ -85,6 +87,7 @@ const AskQuestion = () => {
             <input
               type="text"
               id="ask-ques-tags"
+              style={styles}
               onChange={(e) => {
                 setQuestionTags(e.target.value.split(" "));
               }}

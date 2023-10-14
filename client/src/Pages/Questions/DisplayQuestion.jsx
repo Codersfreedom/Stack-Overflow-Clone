@@ -3,15 +3,15 @@ import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import RightSidebar from '../../components/RightSidebar/RightSidebar'
 import QuestionDetails from "./QuestionDetails"
 
-const DisplayQuestion = ({slideIn,handleSlideIn}) => {
+const DisplayQuestion = ({slideIn,handleSlideIn,styles,logoStyle}) => {
   return (
        
     <div className='home-container-1'>
-<LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
+<LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />
     <div className="home-container-2">
-<QuestionDetails/>
+<QuestionDetails styles = {styles} logoStyle={logoStyle}/>
       
-<RightSidebar/>
+<RightSidebar styles={styles} />
    
   
     </div>

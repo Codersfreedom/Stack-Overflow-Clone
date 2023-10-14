@@ -9,9 +9,15 @@ import Avatar from "../../components/Avatar/Avatar";
 import "./Navbar.css";
 import bars from "../../assests/bars-solid.svg";
 import { setCurrentUser } from "../../actions/currentUser";
+import ToggleBtn from "../Theme/ToggleBtn";
 
 
-const Navbar = ({ handleSlideIn }) => {
+const Navbar = ({ handleSlideIn,styles,logoStyle }) => {
+
+
+  
+
+ 
   const dispatch = useDispatch()
   // var User = null;
   var User = useSelector((state) => state.currentUserReducer)
@@ -36,22 +42,22 @@ const Navbar = ({ handleSlideIn }) => {
 
 
   return (
-    <nav className="main-nav">
+    <nav className="main-nav" style={styles} >
     <div className="navbar">
       <button className="slide-in-icon" onClick={() => handleSlideIn()}>
-        <img src={bars} alt="bars" width="15" />
+        <img src={bars} alt="bars" width="15" style={logoStyle} />
       </button>
-      <div className="navbar-1">
-        <Link to="/" className="nav-item nav-logo">
-          <img src={logo} alt="logo" />
+      <div className="navbar-1" >
+        <Link to="/" className="nav-item nav-logo" >
+          <img src={logo} alt="logo" style={logoStyle}/>
         </Link>
-        <Link to="/" className="nav-item nav-btn res-nav">
+        <Link to="/" className="nav-item nav-btn res-nav"style={styles} >
           About
         </Link>
-        <Link to="/" className="nav-item nav-btn res-nav">
+        <Link to="/" className="nav-item nav-btn res-nav"style={styles}>
           Products
         </Link>
-        <Link to="/" className="nav-item nav-btn res-nav">
+        <Link to="/" className="nav-item nav-btn res-nav"style={styles}>
           For Teams
         </Link>
         <form>
@@ -59,9 +65,9 @@ const Navbar = ({ handleSlideIn }) => {
           <img src={search} alt="search" width="18" className="search-icon" />
         </form>
       </div>
-      <div className="navbar-2">
+      <div className="navbar-2" >
         {User === null ? (
-          <Link to="/Auth" className="nav-item nav-links">
+          <Link to="/Auth" className="nav-item nav-links" >
             Log in
           </Link>
         ) : (
@@ -85,6 +91,7 @@ const Navbar = ({ handleSlideIn }) => {
             </button>
           </>
         )}
+      <ToggleBtn/>
       </div>
     </div>
   </nav>

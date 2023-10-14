@@ -5,12 +5,15 @@ import TagsList from "./TagsList";
 import "./Tags.css";
 import { tagsList } from "./tagList";
 
-const Tags = ({ slideIn, handleSlideIn }) => {
+
+const Tags = ({ slideIn, handleSlideIn,styles,logoStyle }) => {
+
+ 
   return (
     <div className="home-container-1">
-      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} />
-      <div className="home-container-2">
-        <h1 className="tags-h1">Tags</h1>
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />
+      <div className="home-container-2" >
+        <h1 className="tags-h1" >Tags</h1>
         <p className="tags-p">
           A tag is a keyword or label that categorizes your question with other,
           similar questions.<br/>Using the right tags makes it easier for others to find and answer
@@ -21,7 +24,7 @@ const Tags = ({ slideIn, handleSlideIn }) => {
        
         <div className="tags-list-container">
           {tagsList.map((tag, index) => (
-            <TagsList tag={tag} key={index} />
+            <TagsList tag={tag} key={index} styles={styles} />
           ))}
         </div>
       </div>

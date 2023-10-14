@@ -1,29 +1,37 @@
-
-import {BrowserRouter as Router} from 'react-router-dom'
-import './App.css';
-import Navbar from './components/Navbar/Navbar';
-import AllRoutes from './AllRoutes';
-import React, {  useEffect,useState } from 'react';
-import { fetchAllQuestions } from './actions/question';
-import { useDispatch } from 'react-redux';
-import { fetchAllUsers } from './actions/users';
-
-import ChatInterface from './components/ChatBot/ChatInterface';
-import ChatIcon from './components/ChatBot/ChatIcon';
-
-
-
-
+import { BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
+import AllRoutes from "./AllRoutes";
+import React, { useEffect, useState } from "react";
+import { fetchAllQuestions } from "./actions/question";
+import { useDispatch } from "react-redux";
+import { fetchAllUsers } from "./actions/users";
+import { useTheme } from "./context/ThemeContext";
+import ChatInterface from "./components/ChatBot/ChatInterface";
+import ChatIcon from "./components/ChatBot/ChatIcon";
 
 
 function App() {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
 
-  useEffect (() =>{
+  const { isDarkTheme } = useTheme();
+
+  const componentStyles = {
+    backgroundColor: isDarkTheme ? '#333' : '#fff',
+    color: isDarkTheme ? '#fff' : '#333',
+  
+    
+    
+  };
+  const logoStyles ={
+    filter: isDarkTheme ? 'invert(1)' : 'none',
+  }
+
+  useEffect(() => {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
-  },[dispatch])
+  }, [dispatch]);
 
   const [slideIn, setSlideIn] = useState(true);
 
@@ -33,31 +41,30 @@ function App() {
     }
   }, [dispatch]);
 
-  const handleSlideIn  = () => {
+  const handleSlideIn = () => {
     if (window.innerWidth <= 760) {
       setSlideIn((state) => !state);
-    
     }
-  }
+  };
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleChat = () => {
-    
     setIsOpen(!isOpen);
     console.log(isOpen);
     // console.log("clicked")
   };
 
   return (
-    <div className="App">
-    <Router>
-      <Navbar handleSlideIn={handleSlideIn} />
-      <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} />
-      <ChatIcon toggleChat={toggleChat} isOpen={isOpen}/>
-        <ChatInterface isOpen={isOpen}  />
-    </Router>
-
-  </div>
+    <div className="App" style={componentStyles} >
+      <Router>
+        
+        <Navbar handleSlideIn={handleSlideIn} styles ={componentStyles} logoStyle ={logoStyles}/>
+        <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} styles={componentStyles} logoStyle ={logoStyles}  />
+        <ChatIcon toggleChat={toggleChat} isOpen={isOpen} />
+        <ChatInterface isOpen={isOpen} />
+       
+      </Router>
+    </div>
   );
 }
 

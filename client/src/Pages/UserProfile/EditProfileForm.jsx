@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../actions/users";
 
-const EditProfileForm = ({ currentUser, setSwitch }) => {
+const EditProfileForm = ({ currentUser, setSwitch, styles }) => {
   const [name, setName] = useState(currentUser?.result?.name);
   const [about, setAbout] = useState(currentUser?.result?.about);
   const [tags, setTags] = useState([]);
@@ -21,7 +21,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
   return (
     <div>
       <h1 className="edit-profile-title">Edit Your Profile</h1>
-      <h2 className="edit-profile-title-2">Public information</h2>
+      <h2 className="edit-profile-title-2" style={styles}>Public information</h2>
       <form className="edit-profile-form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           <h3>Display name</h3>
@@ -29,6 +29,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            style={styles}
           />
         </label>
         <label htmlFor="about">
@@ -39,6 +40,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             rows="10"
             value={about}
             onChange={(e) => setAbout(e.target.value)}
+            style={styles}
           ></textarea>
         </label>
         <label htmlFor="tags">
@@ -48,6 +50,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
             type="text"
             id="tags"
             onChange={(e) => setTags(e.target.value.split(" "))}
+            style={styles}
           />
         </label>
         <br />
@@ -56,6 +59,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
           type="button"
           className="user-cancel-btn"
           onClick={() => setSwitch(false)}
+          style={styles}
         >
           Cancel
         </button>

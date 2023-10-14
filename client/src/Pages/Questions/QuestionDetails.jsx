@@ -16,7 +16,7 @@ import {
 } from "../../actions/question";
 import Badge from "../../components/Badges/Badge";
 
-const QuestionDetails = () => {
+const QuestionDetails = ({styles,logoStyle}) => {
   const { id } = useParams();
   const questionsList = useSelector((state) => state.questionsReducer);
 
@@ -113,7 +113,8 @@ const url = "https:localhost:5000/";
                         alt=""
                         width="18"
                         className="votes-icon"
-                        onClick={handleUpVote}
+                        onClick={handleUpVote} 
+                        style={logoStyle}
                       />
                       <p>{question.upVote.length - question.downVote.length}</p>
                       <img
@@ -122,6 +123,7 @@ const url = "https:localhost:5000/";
                         width="18"
                         className="votes-icon"
                         onClick={handleDownVote}
+                        style={logoStyle}
                       />
                     </div>
                     <div style={{ width: "100%" }}>
@@ -131,13 +133,13 @@ const url = "https:localhost:5000/";
                           <p key={tag}>{tag}</p>
                         ))}
                       </div>
-                      <div className="question-actions-user">
+                      <div className="question-actions-user"  >
                         <div>
-                          <button type="button" onClick={handleShare}>
+                          <button type="button" onClick={handleShare}style={styles} >
                             Share
                           </button>
                           {User?.result?._id === question?.userId && (
-                            <button type="button" onClick={handleDelete}>
+                            <button type="button" onClick={handleDelete} style={styles} >
                               Delete
                             </button>
                           )}
@@ -170,7 +172,7 @@ const url = "https:localhost:5000/";
                     <DisplayAnswer
                       key={question._id}
                       question={question}
-                      handleShare={handleShare}
+                      handleShare={handleShare} styles={styles}
                     />
                   </section>
                 )}
@@ -187,13 +189,14 @@ const url = "https:localhost:5000/";
                       cols="30"
                       rows="10"
                       value={Answer}
-                      onChange={(e) => setAnswer(e.target.value)}
+                      onChange={(e) => setAnswer(e.target.value)}style={styles}
                     ></textarea>
                     <br />
                     <input
                       type="submit"
                       className="post-ans-btn"
                       value="Post Your Answer"
+                     
                     />
                   </form>
                   <p>

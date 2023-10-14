@@ -1,10 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { useTheme } from "../../context/ThemeContext";
 
 const Questions = ({ question }) => {
+
+  const { isDarkTheme } = useTheme();
+
+  const componentStyles = {
+    backgroundColor: isDarkTheme ? '#333' : '',
+    color: isDarkTheme ? '#fff' : '#333',
+   
+    
+  };
+
   return (
-    <div className="display-question-container">
+    <div className="display-question-container" style={componentStyles} >
       <div className="display-votes-ans">
         <p>{question.upVote.length - question.downVote.length}</p>
         <p>votes</p>
