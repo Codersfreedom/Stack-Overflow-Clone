@@ -29,3 +29,23 @@ gap: 20px;
     cursor: pointer;
 
 }
+
+.user-data-container{
+    display: flex;
+    flex-direction: row;
+    
+}
+.user-data{
+    width: 30%;
+}
+.user-location-container{
+    
+  text-align: center;
+  height: 600px;
+    width: 660px;
+    overflow-y: hidden;
+    z-index: 0;
+
+
+ 
+}

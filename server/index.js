@@ -50,9 +50,10 @@ app.post("/chat", async (req, res) => {
         .json({ response: data.choices[0].message.content.trim() });
       // console.log(data.choices[0].message.content.trim());
     })
-    .catch(() => {
+    .catch((error) => {
       let Error = "Oops! Something went wrong, Please try again.";
       res.json({ response: Error });
+      console.log(error)
     });
 });
 

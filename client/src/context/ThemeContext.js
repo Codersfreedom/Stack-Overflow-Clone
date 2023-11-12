@@ -12,10 +12,10 @@ export function ThemeProvider({ children }) {
 
   
   useEffect(() => {
-    // Get the current hour from the system time
+
+    // Getting the current hour from the system time
     const currentHour = new Date().getHours();
 
-    // Determine the initial theme based on the time (e.g., switch at 6 PM)
     setIsDarkTheme(currentHour >= 18 || currentHour < 6);
   }, []);
 

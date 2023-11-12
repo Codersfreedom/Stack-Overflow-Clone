@@ -68,7 +68,8 @@
 }
 
 .message.bot {
-  background-color: #eee;
+  background-color: #4279f1d3;
+  color: #fff;
   align-self: flex-start;
   border-bottom-left-radius: 0;
 }
@@ -161,9 +162,6 @@
   .chat-interface.open {
     width: 245px;
     height: 410px;
-
- 
-    
     
   }
   .chat-container{

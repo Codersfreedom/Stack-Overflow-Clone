@@ -8,6 +8,7 @@ import DisplayQuestion from './Pages/Questions/DisplayQuestion'
 import Users from './Pages/Users/Users'
 import UserProfile from './Pages/UserProfile/UserProfile';
 import Tags from './Pages/Tags/Tags'
+import About from './Pages/About/About'
 
 
 const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
@@ -22,7 +23,7 @@ const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
         <Route  path ='/Questions' element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/Questions/:id' element={<DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle}  />}/>
         <Route  path ='/Tags' element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} styles = {styles} logoStyle={logoStyle} />}/>
-        
+        <Route path ="/About" element={<About/>}/>
         <Route path = '/Users' element ={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
         <Route path ='/Users/:id' element ={<UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />}/>
       </Routes>

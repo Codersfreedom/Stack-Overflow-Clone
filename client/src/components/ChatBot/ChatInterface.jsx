@@ -2,13 +2,13 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import './Chatbot.css'
 import { auth, firebase } from '../../firebase.js';
-
+import {useTheme} from '../../context/ThemeContext';
 
 
 
 const ChatInterface = ({ isOpen }) => {
 
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState(true);
   const [otp, setOtp] = useState('');
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
@@ -16,6 +16,16 @@ const ChatInterface = ({ isOpen }) => {
   const [isPhone, setPhone] = useState(false);
   const [verificationId, setVerificationId] = useState(null);
 
+  //Theme section
+
+  const { isDarkTheme } = useTheme();
+
+  const componentStyles = {
+    backgroundColor: isDarkTheme ? '#333' : '#fff',
+    color: isDarkTheme ? '#fff' : '#333',
+   
+    
+  };
 
   const handleSendOTP = async () => {
 
@@ -70,6 +80,7 @@ const ChatInterface = ({ isOpen }) => {
 
     try {
       const botResponse = await axios.post('https://stack-overflow-clone-api-wng3.onrender.com/chat', { prompt: message });
+      // const botResponse = await axios.post('http://localhost:5000/chat', { prompt: message });
 
       // Adding bot Response to the chat
       setMessages((prevMessages) => [
@@ -110,7 +121,7 @@ const ChatInterface = ({ isOpen }) => {
 
     <div>
 
-      <div className={`chat-interface ${isOpen ? 'open' : ''}`}>
+      <div className={`chat-interface ${isOpen ? 'open' : ''}`} >
 
 
 
@@ -118,7 +129,7 @@ const ChatInterface = ({ isOpen }) => {
           <h2>Chatbot</h2>
         </div>
 
-        <div className='chat-container'>
+        <div className='chat-container'style={componentStyles}>
           {!isVerified ?
             (
               <div className="verification-container">
@@ -169,7 +180,7 @@ const ChatInterface = ({ isOpen }) => {
                     {messages.map((message, index) => (
 
 
-                      <div key={index} className={`message ${message.isUser ? 'user' : 'bot'}`} >
+                      <div key={index} className={`message ${message.isUser ? 'user' : 'bot'}`}  >
 
                         {message.text}
 

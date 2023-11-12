@@ -1,20 +1,24 @@
-import React from 'react'
-import { useTheme } from '../../context/ThemeContext'
+import React from "react";
+import {  useTheme } from "../../context/ThemeContext"
+import "./ToggleBtn.css";
 
-function ToggleBtn () {
-
-    const { toggleTheme } = useTheme();
-    console.log("clicked")
-
+function ToggleBtn() {
+  const { isDarkTheme, toggleTheme } = useTheme();
 
   return (
-    <div className='dark_mode'>
-        <button className='dark_mode_input' id='darkmode-toggle'onClick={toggleTheme}>
-        Toggle Theme
-        </button>
-      
-    </div>
-  )
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      title="Toggles light & dark"
+      onClick={toggleTheme}
+    >
+      {isDarkTheme ? (
+        <span class="material-symbols-outlined">dark_mode</span>
+      ) : (
+        <span class="material-symbols-outlined">light_mode</span>
+      )}
+    </button>
+  );
 }
 
-export default ToggleBtn
+export default ToggleBtn;

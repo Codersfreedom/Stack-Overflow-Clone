@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import decode from "jwt-decode"
@@ -51,9 +51,9 @@ const Navbar = ({ handleSlideIn,styles,logoStyle }) => {
         <Link to="/" className="nav-item nav-logo" >
           <img src={logo} alt="logo" style={logoStyle}/>
         </Link>
-        <Link to="/" className="nav-item nav-btn res-nav"style={styles} >
+        <NavLink to="/About" className="nav-item nav-btn res-nav"style={styles} >
           About
-        </Link>
+        </NavLink>
         <Link to="/" className="nav-item nav-btn res-nav"style={styles}>
           Products
         </Link>
