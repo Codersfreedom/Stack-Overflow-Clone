@@ -35,3 +35,5 @@ export const getAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id,updateData)=>
 API.patch(`/user/update/${id}`,updateData);
 
+export const ForgetPass = (email) => API.post("/user/forgetPass",{email});
+export const ResetPass = (authData) => API.post(`/user/reset_password/${authData.id}/${authData.token}`,{authData});

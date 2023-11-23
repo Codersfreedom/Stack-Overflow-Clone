@@ -23,6 +23,7 @@ app.use("/questions", questionRoutes);
 app.use("/answer", answerRoutes);
 
 
+
 app.post("/chat", async (req, res) => {
   const apiKey = process.env.OPENAI_API_KEY;
   const apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -48,7 +49,7 @@ app.post("/chat", async (req, res) => {
       res
         .status(200)
         .json({ response: data.choices[0].message.content.trim() });
-      // console.log(data.choices[0].message.content.trim());
+      //console.log(data.choices[0].message.content.trim());
     })
     .catch((error) => {
       let Error = "Oops! Something went wrong, Please try again.";

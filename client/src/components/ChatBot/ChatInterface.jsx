@@ -8,7 +8,7 @@ import {useTheme} from '../../context/ThemeContext';
 
 const ChatInterface = ({ isOpen }) => {
 
-  const [isVerified, setIsVerified] = useState(true);
+  const [isVerified, setIsVerified] = useState(false);
   const [otp, setOtp] = useState('');
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);

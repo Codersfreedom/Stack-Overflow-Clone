@@ -9,6 +9,8 @@ import Users from './Pages/Users/Users'
 import UserProfile from './Pages/UserProfile/UserProfile';
 import Tags from './Pages/Tags/Tags'
 import About from './Pages/About/About'
+import ForgetPass from './Pages/Auth/ForgetPass'
+import PasswordReset from './Pages/Auth/PasswordReset'
 
 
 const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
@@ -19,6 +21,8 @@ const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
      
         <Route path ='/' element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/Auth' element={<Auth styles={styles} logoStyle={logoStyle} />}/>
+        <Route  path ='/ForgetPass' element={<ForgetPass styles={styles} logoStyle={logoStyle} />}/>
+        <Route  path ='/PasswordReset/:id/:token' element={<PasswordReset styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/AskQuestion' element={<AskQuestion styles={styles} />} />
         <Route  path ='/Questions' element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/Questions/:id' element={<DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle}  />}/>

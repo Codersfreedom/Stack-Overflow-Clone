@@ -6,7 +6,7 @@ import "./Auth.css";
 import icon from "../../assests/icon.png";
 import AboutAuth from "./AboutAuth";
 import { signup, login } from "../../actions/auth";
-
+import { Link } from "react-router-dom";
 const Auth = ({styles,logoStyle}) => {
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
@@ -76,9 +76,9 @@ const Auth = ({styles,logoStyle}) => {
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4>Password</h4>
               {!isSignup && (
-                <p style={{ color: "#007ac6", fontSize: "13px" }}>
+                <Link to="/ForgetPass" style={{ color: "#007ac6", fontSize: "13px" }}>
                   forgot password?
-                </p>
+                </Link>
               )}
             </div>
             <input
