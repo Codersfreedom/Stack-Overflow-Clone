@@ -26,8 +26,8 @@ const QuestionDetails = ({styles,logoStyle}) => {
   const dispatch = useDispatch();
   const User = useSelector((state) => state.currentUserReducer);
   const location = useLocation();
-  // const url = "https://stack-underflow-ocrs.onrender.com";
-const url = "https:localhost:5000/";
+   const url = "https://stack-underflow-ocrs.onrender.com";
+//const url = "https:localhost:5000/";
 
   const handlePostAns = (e, answerLength) => {
     e.preventDefault();
