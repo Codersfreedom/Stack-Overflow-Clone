@@ -21,8 +21,8 @@ const PasswordReset = ({styles,logoStyle}) => {
         if(password==cpassword){
 
             
-            console.log(id);
-            console.log(token);
+            // console.log(id);
+            // console.log(token);
 
             dispatch(ResetPassword({id,token,password},navigate));
            

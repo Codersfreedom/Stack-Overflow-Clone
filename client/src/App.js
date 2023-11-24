@@ -50,7 +50,7 @@ function App() {
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
+    //console.log(isOpen);
     // console.log("clicked")
   };
 
