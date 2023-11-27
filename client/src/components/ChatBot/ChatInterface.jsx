@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import './Chatbot.css'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 import { auth, firebase } from '../../firebase.js';
-import {useTheme} from '../../context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 
 
@@ -12,10 +14,15 @@ const ChatInterface = ({ isOpen }) => {
   const [otp, setOtp] = useState('');
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState();
   const [isPhone, setPhone] = useState(false);
   const [verificationId, setVerificationId] = useState(null);
+ 
 
+
+  
+
+  
   //Theme section
 
   const { isDarkTheme } = useTheme();
@@ -23,8 +30,8 @@ const ChatInterface = ({ isOpen }) => {
   const componentStyles = {
     backgroundColor: isDarkTheme ? '#333' : '#fff',
     color: isDarkTheme ? '#fff' : '#333',
-   
-    
+
+
   };
 
   const handleSendOTP = async () => {
@@ -121,7 +128,7 @@ const ChatInterface = ({ isOpen }) => {
 
     <div>
 
-      <div className={`chat-interface ${isOpen ? 'open' : ''}`} >
+      <div className={`chat-interface ${isOpen ? 'open' : ''}` } style={componentStyles}>
 
 
 
@@ -129,7 +136,7 @@ const ChatInterface = ({ isOpen }) => {
           <h2>Chatbot</h2>
         </div>
 
-        <div className='chat-container'style={componentStyles}>
+        <div className='chat-container' style={componentStyles}>
           {!isVerified ?
             (
               <div className="verification-container">
@@ -138,11 +145,12 @@ const ChatInterface = ({ isOpen }) => {
                   <div>
 
                     <h2>Verify Your Phone Number to Use the bot</h2>
-                    <input
-                      type="text"
+                
+                    <PhoneInput
+                      
                       placeholder="Enter Phone Number"
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      onChange=  {setPhoneNumber}
                     />
                     <div id="recaptcha-container"></div>
                     <button onClick={handleSendOTP}>Send OTP</button>

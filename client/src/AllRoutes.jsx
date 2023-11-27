@@ -22,7 +22,7 @@ const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
         <Route path ='/' element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/Auth' element={<Auth styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/ForgetPass' element={<ForgetPass styles={styles} logoStyle={logoStyle} />}/>
-        <Route  path ='/PasswordReset/:id/:token' element={<PasswordReset styles={styles} logoStyle={logoStyle} />}/>
+        <Route exact path ='/PasswordReset/:id/:token' element={<PasswordReset styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/AskQuestion' element={<AskQuestion styles={styles} />} />
         <Route  path ='/Questions' element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/Questions/:id' element={<DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle}  />}/>

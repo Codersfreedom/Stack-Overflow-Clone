@@ -7,7 +7,7 @@ import "./Auth.css";
 import icon from "../../assests/icon.png";
 import { ForgetPassword } from '../../actions/auth';
 
-const ForgetPass = (styles, logoStyle) => {
+const ForgetPass = ({styles, logoStyle}) => {
 
     const [email, setEmail] = useState("");
 
@@ -26,13 +26,11 @@ const ForgetPass = (styles, logoStyle) => {
             alert("Invalid ")
         }
 
-        
-           
-         
-        
+
 
     };
     return (
+  
         <section className="auth-section" style={styles}>
 
             <div className="auth-container-2" style={styles}>
@@ -63,6 +61,7 @@ const ForgetPass = (styles, logoStyle) => {
             </div>
 
         </section>
+        
     )
 }
 
