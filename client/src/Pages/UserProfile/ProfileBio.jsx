@@ -2,11 +2,15 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import risingStar from '../../assests/rising_star.png';
-import superStar from '../../assests/super_star.jpg'
+import superStar from '../../assests/super_star.png'
 import goldUser from '../../assests/gold user.png';
 import superUser from '../../assests/trophy.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './ProfileBio.css'
 import UserLocation from "../UserLocation/UserLocation";
+import { Link } from "react-router-dom";
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
+
 
 const ProfileBio = ({ currentProfile }) => {
   const { id } = useParams();
@@ -54,7 +58,8 @@ const ProfileBio = ({ currentProfile }) => {
 
           <div className="Badges">
 
-            <h4>Earned Badges</h4>
+            <h4>Earned Badges <span title="know more">  <Link to ="/Rules"> <FontAwesomeIcon icon={faLightbulb} /></Link></span></h4>
+            
 
             {questionsList.data
               .filter((question) => question.userId === id)
@@ -62,17 +67,17 @@ const ProfileBio = ({ currentProfile }) => {
                 <div key={question._id} className="badge_section">
 
                   {question.upVote.length >= 10 && (
-                    <img src={risingStar} alt="risingstar" className="probadge" title="Rising Star" />
+                  <Link to ="/Rules">  <img src={risingStar} alt="risingstar" className="probadge" title="Rising Star" /></Link>
                   )}
 
                   {question.upVote.length >= 50 && (
-                    <img src={superStar} alt="legendbadge" className="legendbadge" title="Super Star" />
+                  <Link to='/Rules'>  <img src={superStar} alt="legendbadge" className="legendbadge" title="Super Star" /></Link>
                   )}
 
 
 
 
-                  {question.upVote.length < 10 && (
+                  {question.upVote.length < 10 && totalAnswers <10 && (
                     <p>User has no badge till now.</p>
                   )}
                 </div>
@@ -80,17 +85,17 @@ const ProfileBio = ({ currentProfile }) => {
 
             <div className="Total_answer">
 
-              {totalAnswers > 0 && totalAnswers >= 20 && (
+              {  totalAnswers >= 10 && (
                 <div className=" image-container ">
-                  <img src={goldUser} alt="golduser" title="Gold User" />
+                 <Link to="/Rules"> <img src={goldUser} alt="golduser" title="Gold User" /></Link>
 
 
                 </div>
               )}
-              {totalAnswers > 0 && totalAnswers >= 100 && (
+              {totalAnswers > 0 && totalAnswers >= 20 && (
                 <div className=" image-container ">
 
-                  <img src={superUser} alt="superuser" title="Super User" />
+                <Link to ="/Rules">  <img src={superUser} alt="superuser" title="Super User" /></Link>
 
                 </div>
               )}

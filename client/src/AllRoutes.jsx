@@ -11,6 +11,7 @@ import Tags from './Pages/Tags/Tags'
 import About from './Pages/About/About'
 import ForgetPass from './Pages/Auth/ForgetPass'
 import PasswordReset from './Pages/Auth/PasswordReset'
+import Rules from './components/Badges/Rules'
 
 
 const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
@@ -30,6 +31,7 @@ const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
         <Route path ="/About" element={<About/>}/>
         <Route path = '/Users' element ={<Users slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
         <Route path ='/Users/:id' element ={<UserProfile slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />}/>
+        <Route path ='/Rules' element ={<Rules slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />}/>
       </Routes>
   
   )
