@@ -16,7 +16,7 @@ import PasswordReset from './Pages/Auth/PasswordReset'
 const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
   return (
   
-      <Routes>
+      <Routes >
        
      
         <Route path ='/' element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle} />}/>

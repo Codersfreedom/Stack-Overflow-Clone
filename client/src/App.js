@@ -1,4 +1,4 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import AllRoutes from "./AllRoutes";
@@ -56,14 +56,14 @@ function App() {
 
   return (
     <div className="App" style={componentStyles} >
-      <Router>
+      <HashRouter >
         
         <Navbar handleSlideIn={handleSlideIn} styles ={componentStyles} logoStyle ={logoStyles}/>
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} styles={componentStyles} logoStyle ={logoStyles}  />
         <ChatIcon toggleChat={toggleChat} isOpen={isOpen} />
         <ChatInterface isOpen={isOpen} />
        
-      </Router>
+      </HashRouter>
     </div>
   );
 }
