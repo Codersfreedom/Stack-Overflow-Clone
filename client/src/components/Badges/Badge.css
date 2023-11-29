@@ -1,35 +1,48 @@
-.badge{
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
-    height: 45px;
+.badge {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  height: 45px;
 }
-.rules-list-container{
-    margin-top: 50px;
-    padding-top: 50px;
+.rules-list-container {
+  margin-top: 50px;
+  padding-top: 50px;
+}
+.badge-container {
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+}
+.badges > img {
+  width: 100px;
+  height: 100px;
+  /* border-radius: 50%; */
+  cursor: pointer;
+}
 
-}
-.badge-container{
-    display: flex;
-    gap: 10px;
+.badges {
+  display: flex;
+  flex-direction: column;
 
+  align-items: center;
 }
-.badges>img{
-    width: 100px;
-    height: 100px;
-    /* border-radius: 50%; */
-    cursor: pointer;
-}
-.badges{
-    display: flex;
-    flex-direction: column;
+.super-user {
     
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
 }
-.super-user{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+.super-user>img{
+    width:132px
+}
 
+@media (min-width: 345px) and (max-width: 454px) {
+  .badges > img {
+    width: 50px;
+    height: 50px;
+  }
+  .super-user>img{
+    width:65px;
+}
 }

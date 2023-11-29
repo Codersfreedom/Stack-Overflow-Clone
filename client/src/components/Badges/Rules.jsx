@@ -31,7 +31,7 @@ const Rules = ({ slideIn, handleSlideIn, styles, logoStyle }) => {
             Gold User
           </div>
           <div className="super-user">
-            <img src={superUser} alt="" width={132} title='Super User' />
+            <img src={superUser} alt=""  title='Super User' />
           Super User
           </div>
         </div>
