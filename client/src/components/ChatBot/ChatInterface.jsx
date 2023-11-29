@@ -142,11 +142,11 @@ const ChatInterface = ({ isOpen }) => {
               <div className="verification-container">
 
                 {!isPhone && (
-                  <div>
+                  <div className='box'>
 
-                    <h2>Verify Your Phone Number to Use the bot</h2>
+                    <h3>Verify Your Phone Number to Use the bot</h3>
                 
-                    <PhoneInput
+                    <PhoneInput className='Phone-input'
                       
                       placeholder="Enter Phone Number"
                       value={phoneNumber}

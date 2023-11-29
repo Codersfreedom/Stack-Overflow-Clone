@@ -63,6 +63,17 @@ const combinedStyle = {
               <p>Users</p>
             </NavLink>
           </button>
+
+          <button onClick={() => handleSlideIn()} className="nav-btn">
+            <NavLink
+              to="/Rules"
+              className="side-nav-links"
+              activeclassname="active"
+              style={{ paddingLeft: "40px" ,...styles}}
+            >
+              <p>Instructions</p>
+            </NavLink>
+          </button>
         </div>
       </nav>
     </div>
