@@ -37,9 +37,9 @@
   flex-direction: column;
 }
 .chat-interface .top {
-  padding: 2px 0 0 20px;
+  padding: 2px 0px 2px 0px;
   position: relative;
-  padding: 8px;
+ 
   text-align: center;
   color: #fff;
   background: #724ae8;
@@ -167,20 +167,26 @@ padding: 2px  10px 20px 10px ;
 
 @media (max-width: 454px) and (min-width:350px) {
   .chat-interface.open {
-    width: 245px;
+    width: 270px;
     height: 410px;
+    padding-bottom:2px ;
     
   }
   .chat-container{
     height: 330px;
+    ;
   }
   .chatbox{
     height: 310px;
+    
     
   }
   .chat-messages{
     padding-bottom: 33px;
    
+  }
+  .chat-input{
+    padding: 40px 3px 0px 2px ;
   }
 
   
@@ -188,6 +194,12 @@ padding: 2px  10px 20px 10px ;
     width: 240px;
    padding-right:40px ;
    padding-left: 32px;
+  }
+  div iframe {
+    transform:scale(0.77);
+    -webkit-transform:scale(0.77);
+    transform-origin:0 0;
+    -webkit-transform-origin:0 0;
   }
 }
 
