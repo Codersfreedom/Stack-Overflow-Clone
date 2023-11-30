@@ -21,10 +21,10 @@ const AllRoutes = ({slideIn,handleSlideIn,styles,logoStyle}) => {
        
      
         <Route path ='/' element={<Home slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle} />}/>
-        <Route  path ='/Auth' element={<Auth styles={styles} logoStyle={logoStyle} />}/>
-        <Route  path ='/ForgetPass' element={<ForgetPass styles={styles} logoStyle={logoStyle} />}/>
-        <Route exact path ='/PasswordReset/:id/:token' element={<PasswordReset styles={styles} logoStyle={logoStyle} />}/>
-        <Route  path ='/AskQuestion' element={<AskQuestion styles={styles} />} />
+        <Route  path ='/Auth' element={<Auth slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
+        <Route  path ='/ForgetPass' element={<ForgetPass slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
+        <Route exact path ='/PasswordReset/:id/:token' element={<PasswordReset slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
+        <Route  path ='/AskQuestion' element={<AskQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} />} />
         <Route  path ='/Questions' element={<Questions slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />}/>
         <Route  path ='/Questions/:id' element={<DisplayQuestion slideIn={slideIn} handleSlideIn={handleSlideIn} styles ={styles} logoStyle={logoStyle}  />}/>
         <Route  path ='/Tags' element={<Tags slideIn={slideIn} handleSlideIn={handleSlideIn} styles = {styles} logoStyle={logoStyle} />}/>

@@ -11,7 +11,7 @@ const Rules = ({ slideIn, handleSlideIn, styles, logoStyle }) => {
     <div className="home-container-1">
       <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />
       <div className="home-container-2" >
-        <h1 className="rules-h1" >Rules</h1>
+        <h1 className="rules-h1" >Instructions</h1>
         <p className="rules-p">
           Follow this rules to earn badges
         </p>

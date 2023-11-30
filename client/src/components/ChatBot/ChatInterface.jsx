@@ -5,7 +5,8 @@ import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import { auth, firebase } from '../../firebase.js';
 import { useTheme } from '../../context/ThemeContext';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 
 
 const ChatInterface = ({ isOpen }) => {
@@ -205,8 +206,12 @@ const ChatInterface = ({ isOpen }) => {
                     placeholder="Type your message..."
                     value={input}
                     onChange={handleInputChange}
+                    
                   />
-                  <button onClick={handleSendMessage}>Send</button>
+                  <div className='Sendicon'>  
+                  <FontAwesomeIcon onClick={handleSendMessage}  icon ={faPaperPlane}/>
+                  </div>
+                 
                 </div>
               </div>
             )}

@@ -5,13 +5,13 @@ import RightSidebar from '../../components/RightSidebar/RightSidebar'
 import HomeMainbar from '../../components/HomeMainbar/HomeMainbar'
 
 
-const Home = ({ slideIn,styles ,logoStyle}) => {
+const Home = ({ slideIn,handleSlideIn, styles ,logoStyle}) => {
 
   return (
 
 
     <div className='home-container-1'>
-      <LeftSidebar slideIn={slideIn} styles={styles} logoStyle={logoStyle} />
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle} />
       <div className="home-container-2">
 
         <HomeMainbar  />

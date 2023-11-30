@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ResetPassword } from '../../actions/auth';
+import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 
-const PasswordReset = ({styles,logoStyle}) => {
+const PasswordReset = ({slideIn,handleSlideIn,styles,logoStyle}) => {
     const [password, setPassword] = useState("");
     const [cpassword, setcPassword] = useState("");
     const dispatch = useDispatch();
@@ -40,6 +41,8 @@ const PasswordReset = ({styles,logoStyle}) => {
     };
 
   return (
+    <div className="home-container-1">
+        <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />
     <section className="auth-section" style={styles}>
 
             <div className="auth-container-2" style={styles}>
@@ -83,6 +86,7 @@ const PasswordReset = ({styles,logoStyle}) => {
             </div>
 
         </section>
+        </div>
   )
 }
 

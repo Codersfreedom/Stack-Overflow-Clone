@@ -2,12 +2,12 @@ import React from 'react'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import "./Auth.css";
 import icon from "../../assests/icon.png";
 import { ForgetPassword } from '../../actions/auth';
 
-const ForgetPass = ({styles, logoStyle}) => {
+const ForgetPass = ({slideIn,handleSlideIn,styles, logoStyle}) => {
 
     const [email, setEmail] = useState("");
 
@@ -30,7 +30,8 @@ const ForgetPass = ({styles, logoStyle}) => {
 
     };
     return (
-  
+        <div className="home-container-1">
+            <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />
         <section className="auth-section" style={styles}>
 
             <div className="auth-container-2" style={styles}>
@@ -61,6 +62,7 @@ const ForgetPass = ({styles, logoStyle}) => {
             </div>
 
         </section>
+        </div>
         
     )
 }

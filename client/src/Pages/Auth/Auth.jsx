@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import LeftSidebar from "../../components/LeftSidebar/LeftSidebar";
 import "./Auth.css";
 import icon from "../../assests/icon.png";
 import AboutAuth from "./AboutAuth";
 import { signup, login } from "../../actions/auth";
 import { Link } from "react-router-dom";
-const Auth = ({styles,logoStyle}) => {
+const Auth = ({slideIn,handleSlideIn,styles,logoStyle}) => {
   const [isSignup, setIsSignup] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,6 +39,8 @@ const Auth = ({styles,logoStyle}) => {
   };
 
   return (
+    <div className="home-container-1">
+      <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />
     <section className="auth-section" style={styles}>
       {isSignup && <AboutAuth />}
       <div className="auth-container-2" style={styles}>
@@ -107,6 +109,7 @@ const Auth = ({styles,logoStyle}) => {
         </p>
       </div>
     </section>
+    </div>
   );
 };
 
