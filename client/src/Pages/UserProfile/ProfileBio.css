@@ -46,6 +46,11 @@ gap: 20px;
     overflow-y: hidden;
     z-index: 0;
 
+}
 
- 
+@media (max-width:454px) and (min-width:350px){
+.user-location-container{
+    height: 300px;
+    width: 250px;
+}
 }
