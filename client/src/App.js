@@ -9,6 +9,8 @@ import { fetchAllUsers } from "./actions/users";
 import { useTheme } from "./context/ThemeContext";
 import ChatInterface from "./components/ChatBot/ChatInterface";
 import ChatIcon from "./components/ChatBot/ChatIcon";
+import ToastContainer from "./components/Toast";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -32,6 +34,7 @@ function App() {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
   }, [dispatch]);
+
 
   const [slideIn, setSlideIn] = useState(true);
 
@@ -59,6 +62,7 @@ function App() {
       <HashRouter >
         
         <Navbar handleSlideIn={handleSlideIn} styles ={componentStyles} logoStyle ={logoStyles}/>
+        <ToastContainer/>
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} styles={componentStyles} logoStyle ={logoStyles}  />
         <ChatIcon toggleChat={toggleChat} isOpen={isOpen} />
         <ChatInterface isOpen={isOpen} />

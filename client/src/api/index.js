@@ -1,7 +1,9 @@
 import axios from "axios";
+import {  toast } from 'react-toastify';
+
 
 const API = axios.create({
-   baseURL: "https://stack-overflow-clone-api-wng3.onrender.com/",
+  baseURL: "https://stack-overflow-clone-api-wng3.onrender.com/",
   //baseURL: "http://localhost:5000/",
  
 
@@ -15,6 +17,10 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
+
+
+
+
 
 export const logIn = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
@@ -35,5 +41,28 @@ export const getAllUsers = () => API.get("/user/getAllUsers");
 export const updateProfile = (id,updateData)=>
 API.patch(`/user/update/${id}`,updateData);
 
-export const ForgetPass = (email) => API.post("/user/forgetPass",{email});
+export const ForgetPass = (email) => API.post("/user/forgetPass",{email})
+.then( ()=>  toast('Recovery link send to your mail', {
+  type:"success",
+  position: "top-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+  }))
+  .catch(err=> toast( "User doesn't exists", {
+  type:"error",
+  position: "top-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+  }));
+
 export const ResetPass = (authData) => API.post(`/user/reset_password/${authData.id}/${authData.token}`,{authData});

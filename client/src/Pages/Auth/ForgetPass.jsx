@@ -6,6 +6,7 @@ import LeftSidebar from '../../components/LeftSidebar/LeftSidebar';
 import "./Auth.css";
 import icon from "../../assests/icon.png";
 import { ForgetPassword } from '../../actions/auth';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ForgetPass = ({slideIn,handleSlideIn,styles, logoStyle}) => {
 
@@ -14,21 +15,16 @@ const ForgetPass = ({slideIn,handleSlideIn,styles, logoStyle}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSubmit =  (e) =>  {
+    const handleSubmit =  ((e) =>  {
         e.preventDefault();
         if (!email) {
             alert("Enter email and password");
         }
         
-        const response= dispatch(ForgetPassword({ email }, navigate));
-        // console.log(response);
-        if(response ===404){
-            alert("Invalid ")
-        }
-
-
-
-    };
+        dispatch(ForgetPassword({ email }, navigate));
+        
+    })
+    
     return (
         <div className="home-container-1">
             <LeftSidebar slideIn={slideIn} handleSlideIn={handleSlideIn} styles={styles} logoStyle={logoStyle}  />
