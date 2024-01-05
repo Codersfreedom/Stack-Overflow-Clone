@@ -2,7 +2,7 @@ import { HashRouter, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import AllRoutes from "./AllRoutes";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { fetchAllQuestions } from "./actions/question";
 import { useDispatch } from "react-redux";
 import { fetchAllUsers } from "./actions/users";
@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
+
+ 
   const dispatch = useDispatch();
 
 
@@ -57,6 +59,30 @@ function App() {
     // console.log("clicked")
   };
 
+  const menuRef = useRef();
+  useEffect(() => {
+    const handler = (e) => {
+      if(menuRef.current== null){
+      
+      }
+      else if (!menuRef.current.contains(e.target)) {
+        setIsOpen(false);
+      
+        e.stopPropagation()
+
+      }
+    }
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    }
+  })
+
+
+
+
+
+
   return (
     <div className="App" style={componentStyles} >
       <HashRouter >
@@ -65,7 +91,7 @@ function App() {
         <ToastContainer/>
         <AllRoutes slideIn={slideIn} handleSlideIn={handleSlideIn} styles={componentStyles} logoStyle ={logoStyles}  />
         <ChatIcon toggleChat={toggleChat} isOpen={isOpen} />
-        <ChatInterface isOpen={isOpen} />
+        <ChatInterface reff={menuRef} isOpen={isOpen} />
        
       </HashRouter>
     </div>

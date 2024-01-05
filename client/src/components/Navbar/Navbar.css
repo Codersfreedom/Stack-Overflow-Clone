@@ -124,3 +124,36 @@
     display: none;
   }
 }
+
+.profile-open{
+position: absolute;
+background: rgba(36,36,40,.95);
+backdrop-filter: blur(10px);
+color: white;
+width: 75px;
+height: 100px;
+padding:0px 0px 5px 10px;
+top: 46px;
+border:1px solid rgba(255,255,255,.1);
+box-shadow: 0 5px 5px rgba(0,0,0,.05);
+transition: all 0.1s ease; 
+border-radius: 1rem;
+
+}
+
+
+
+
+
+
+.profile-close{
+  display: none;
+  
+}
+.profile{
+cursor: pointer;
+}
+
+.profile-open{
+  cursor: pointer;
+}

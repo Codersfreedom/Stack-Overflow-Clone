@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProfile } from "../../actions/users";
+import './EditProfile.css';
 
 const EditProfileForm = ({ currentUser, setSwitch, styles }) => {
+
   const [name, setName] = useState(currentUser?.result?.name);
   const [about, setAbout] = useState(currentUser?.result?.about);
+  const [image,setImage] = useState(currentUser?.result?.image );
+
+
   const [tags, setTags] = useState([]);
   const dispatch = useDispatch();
-  console.log(tags);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (tags[0] === "" || tags.length === 0) {
       alert("Update tags field");
     } else {
-      dispatch(updateProfile(currentUser?.result?._id, { name, about, tags }));
+      dispatch(updateProfile(currentUser?.result?._id, { name, about, tags,image }));
     }
     setSwitch(false);
   };
@@ -23,6 +28,18 @@ const EditProfileForm = ({ currentUser, setSwitch, styles }) => {
       <h1 className="edit-profile-title">Edit Your Profile</h1>
       <h2 className="edit-profile-title-2" style={styles}>Public information</h2>
       <form className="edit-profile-form" onSubmit={handleSubmit}>
+        <div className="profile-picture">
+
+
+        
+    <img src={image} alt="user image"  />
+              <input type="file"
+                onChange={(event) => {
+                  
+                  setImage(event.target.files[0]);
+                }} />
+              
+              </div>
         <label htmlFor="name">
           <h3>Display name</h3>
           <input

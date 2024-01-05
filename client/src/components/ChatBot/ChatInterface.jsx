@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useRef, useState,useEffect } from 'react'
 import './Chatbot.css'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
 
 
-const ChatInterface = ({ isOpen }) => {
+const ChatInterface = ({ isOpen,reff}) => {
 
   const [isVerified, setIsVerified] = useState(false);
   const [otp, setOtp] = useState('');
@@ -18,10 +18,11 @@ const ChatInterface = ({ isOpen }) => {
   const [phoneNumber, setPhoneNumber] = useState();
   const [isPhone, setPhone] = useState(false);
   const [verificationId, setVerificationId] = useState(null);
- 
 
 
-  
+
+
+
 
   
   //Theme section
@@ -123,13 +124,13 @@ const ChatInterface = ({ isOpen }) => {
   };
 
 
-
+ 
   return (
 
 
     <div>
 
-      <div className={`chat-interface ${isOpen ? 'open' : ''}` } style={componentStyles}>
+      <div className={`chat-interface ${isOpen ? 'open' : ''}` } style={componentStyles}  ref={reff}>
 
 
 

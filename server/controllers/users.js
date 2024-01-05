@@ -22,7 +22,7 @@ export const getAllUsers = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
   const { id: _id } = req.params;
-  const { name, about, tags } = req.body;
+  const { name, about, tags,image } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("User unavailable...");
@@ -31,7 +31,7 @@ export const updateProfile = async (req, res) => {
   try {
     const updatedProfile = await users.findByIdAndUpdate(
       _id,
-      { $set: { name: name, about: about, tags: tags } },
+      { $set: { name: name, about: about, tags: tags,image:image } },
       { new: true }
     );
     res.status(200).json(updatedProfile);

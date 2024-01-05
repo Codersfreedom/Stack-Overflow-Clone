@@ -1,0 +1,6 @@
+.profile-picture{
+    width: 150px;
+}
+.profile-picture>input{
+    padding-top: 5px;
+}

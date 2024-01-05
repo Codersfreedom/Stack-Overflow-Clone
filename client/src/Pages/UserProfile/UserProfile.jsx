@@ -25,7 +25,7 @@ const UserProfile = ({ slideIn, handleSlideIn,styles,logoStyle }) => {
         <section>
           <div className="user-details-container">
             <div className="user-details">
-              <Avatar
+              {/* <Avatar
                 backgroundColor="purple"
                 color="white"
                 fontSize="50px"
@@ -33,7 +33,8 @@ const UserProfile = ({ slideIn, handleSlideIn,styles,logoStyle }) => {
                 py="30px"
               >
                 {currentProfile?.name.charAt(0).toUpperCase()}
-              </Avatar>
+              </Avatar> */}
+              <img src={currentProfile?.image} alt="user-image" />
               <div className="user-name">
                 <h1>{currentProfile?.name}</h1>
                 <p>

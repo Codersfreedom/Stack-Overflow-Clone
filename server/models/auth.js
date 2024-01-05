@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   about: { type: String },
   tags: { type: [String] },
+  image:{data:Buffer,contentType:String},
   joinedOn: { type: Date, default: Date.now },
 });
 
